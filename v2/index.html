@@ -22,6 +22,12 @@
 <div class="backdrop" aria-hidden="true"></div>
 <div class="veil" id="veil" aria-hidden="true">
   <canvas class="veil__wall"></canvas>
+  <div class="veil__cards">
+    <span class="veil__card" style="--i:0;--tilt:-7deg;--x:4%"><img src="../img/w02.webp" alt="" width="675" height="1200" decoding="async"></span>
+    <span class="veil__card" style="--i:1;--tilt:5deg;--x:58%"><img src="../img/i06.webp" alt="" width="800" height="1200" decoding="async"></span>
+    <span class="veil__card" style="--i:2;--tilt:-4deg;--x:30%"><img src="../img/w03.webp" alt="" width="900" height="1200" decoding="async"></span>
+    <span class="veil__card" style="--i:3;--tilt:8deg;--x:74%"><img src="../img/w05.webp" alt="" width="900" height="1200" decoding="async"></span>
+  </div>
   <div class="veil__num"><span class="veil__digit">3</span></div>
 </div>
 <canvas class="motes" aria-hidden="true"></canvas>
@@ -36,6 +42,7 @@
       <nav class="nav" aria-label="Разделы">
         <a href="#studio">О студии</a>
         <a href="#care">Услуги</a>
+        <a href="#gallery">Галерея</a>
         <a href="#voices">Отзывы</a>
         <a href="#visit">Как нас найти</a>
       </nav>
@@ -45,6 +52,7 @@
     <nav class="drawer" id="drawer" aria-label="Меню" hidden>
       <a href="#studio">О студии</a>
       <a href="#care">Услуги</a>
+      <a href="#gallery">Галерея</a>
       <a href="#voices">Отзывы</a>
       <a href="#visit">Как нас найти</a>
     </nav>
@@ -56,6 +64,7 @@
   <section class="opening" aria-labelledby="opening-title">
     <div class="shell opening__in">
       <h1 id="opening-title"><span class="bigword">Jewel</span> <span class="opening__tail">– студия маникюра и педикюра у м.&nbsp;Площадь Ленина</span></h1>
+      <figure class="opening__frame"><img src="../img/i03.webp" alt="Розовая неоновая вывеска JEWEL в зелени и зеркало с подсветкой" width="1200" height="800" fetchpriority="high" decoding="async"></figure>
       <p class="opening__lead">Доведём маникюр до вашего идеала. Уютная студия на девятом этаже в центре города: внимательные мастера, чай или кофе на ваш выбор и кино во время процедуры.</p>
       <div class="opening__actions">
         <a class="pill pill--main pill--big" href="https://dikidi.net/197615/" target="_blank" rel="noopener">Записаться онлайн</a>
@@ -108,46 +117,78 @@
     </div>
   </section>
 
+  <section class="block gallery" id="gallery" aria-labelledby="gallery-title">
+    <div class="shell">
+      <h2 id="gallery-title">Галерея</h2>
+      <div class="gallery__group">
+        <h3 id="gallery-place">Интерьер</h3>
+        <div class="reel" id="reel-place" aria-roledescription="карусель" aria-labelledby="gallery-place">
+        <ul class="reel__track" tabindex="0" aria-labelledby="gallery-place">
+          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="1 из 5"><figure class="shot"><img src="../img/i01.webp" alt="Угол кабинета: стеклянная стена в чёрной раме, телевизор и кожаное кресло" width="800" height="1200" loading="lazy" decoding="async"></figure></li>
+          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="2 из 5"><figure class="shot"><img src="../img/i02.webp" alt="Педикюрное кресло под серой накидкой, лампа и штора" width="800" height="1200" loading="lazy" decoding="async"></figure></li>
+          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="3 из 5"><figure class="shot"><img src="../img/i04.webp" alt="Маникюрный стол с лампой и подлокотником у неоновой вывески" width="800" height="1200" loading="lazy" decoding="async"></figure></li>
+          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="4 из 5"><figure class="shot"><img src="../img/i05.webp" alt="Общий вид зала: маникюрные столы, серые кресла и лампы" width="1200" height="801" loading="lazy" decoding="async"></figure></li>
+          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="5 из 5"><figure class="shot"><img src="../img/i06.webp" alt="Зона ожидания: серый диван с подушками, шпиц и неоновая вывеска" width="800" height="1200" loading="lazy" decoding="async"></figure></li>
+        </ul>
+        <div class="reel__controls">
+          <button class="reel__arrow reel__arrow--prev" type="button" aria-label="Предыдущее фото"><span aria-hidden="true">←</span></button>
+          <div class="reel__dots">
+          <button class="reel__dot" type="button" aria-label="Фото 1"></button>
+          <button class="reel__dot" type="button" aria-label="Фото 2"></button>
+          <button class="reel__dot" type="button" aria-label="Фото 3"></button>
+          <button class="reel__dot" type="button" aria-label="Фото 4"></button>
+          <button class="reel__dot" type="button" aria-label="Фото 5"></button>
+          </div>
+          <button class="reel__arrow reel__arrow--next" type="button" aria-label="Следующее фото"><span aria-hidden="true">→</span></button>
+        </div>
+        </div>
+      </div>
+      <div class="gallery__group">
+        <h3 id="gallery-works">Работы</h3>
+        <div class="reel" id="reel-works" aria-roledescription="карусель" aria-labelledby="gallery-works">
+        <ul class="reel__track" tabindex="0" aria-labelledby="gallery-works">
+          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="1 из 5"><figure class="shot"><img src="../img/w01.webp" alt="Нюдовый педикюр на бирюзовой ткани" width="836" height="714" loading="lazy" decoding="async"></figure></li>
+          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="2 из 5"><figure class="shot"><img src="../img/w02.webp" alt="Короткий тёмно-бордовый маникюр" width="675" height="1200" loading="lazy" decoding="async"></figure></li>
+          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="3 из 5"><figure class="shot"><img src="../img/w03.webp" alt="Молочный квадрат с сиреневым бантиком и стразами" width="900" height="1200" loading="lazy" decoding="async"></figure></li>
+          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="4 из 5"><figure class="shot"><img src="../img/w04.webp" alt="Френч на квадратных ногтях и серебряное кольцо" width="750" height="1000" loading="lazy" decoding="async"></figure></li>
+          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="5 из 5"><figure class="shot"><img src="../img/w05.webp" alt="Розово-нюдовый френч с серебряными кончиками" width="900" height="1200" loading="lazy" decoding="async"></figure></li>
+        </ul>
+        <div class="reel__controls">
+          <button class="reel__arrow reel__arrow--prev" type="button" aria-label="Предыдущее фото"><span aria-hidden="true">←</span></button>
+          <div class="reel__dots">
+          <button class="reel__dot" type="button" aria-label="Фото 1"></button>
+          <button class="reel__dot" type="button" aria-label="Фото 2"></button>
+          <button class="reel__dot" type="button" aria-label="Фото 3"></button>
+          <button class="reel__dot" type="button" aria-label="Фото 4"></button>
+          <button class="reel__dot" type="button" aria-label="Фото 5"></button>
+          </div>
+          <button class="reel__arrow reel__arrow--next" type="button" aria-label="Следующее фото"><span aria-hidden="true">→</span></button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="block voices" id="voices" aria-labelledby="voices-title">
     <div class="shell">
       <h2 id="voices-title">Что говорят наши гости</h2>
-      <div class="reel" aria-roledescription="карусель" aria-label="Отзывы гостей">
-        <ul class="reel__track" tabindex="0" aria-label="Отзывы">
-          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="1 из 4">
-            <figure class="voice">
-              <blockquote><p>«Была в салоне первый раз. Прекрасный сервис, очень радушно встретили, сразу предложили напитки, мастер Екатерина учла все мои желания. Отдельно про мастера: очень улыбчивая, вежливая и мега приятная девушка, очень быстро сделала мне потрясающее "После" из моего не самого симпатичного "До"😅 Наконец звезды для меня сошлись: место, мастер, работа, все прекрасно😍 Спасибо😌»</p></blockquote>
-              <figcaption>Алена, 8 октября 2026</figcaption>
-            </figure>
-          </li>
-          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="2 из 4">
-            <figure class="voice">
-              <blockquote><p>«К вам я прихожу уже не первый раз , но к этому мастеру первый, все понравилось, я довольна👌 отзывчивая девушка , аккуратный маникюр🫶»</p></blockquote>
-              <figcaption>Елена, 4 октября 2026</figcaption>
-            </figure>
-          </li>
-          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="3 из 4">
-            <figure class="voice">
-              <blockquote><p>«У Дианы я была впервые и осталась очень довольна! Все сделано аккуратно, ноготочки выглядят ровно и ухоженно💅🏻Мастер очень милая и приятная☺️ Инструменты вскрывала при мне, всё чисто и аккуратно. Буду записываться ещё, спасибо! 🤍»</p></blockquote>
-              <figcaption>Карина, 28 августа 2026</figcaption>
-            </figure>
-          </li>
-          <li class="reel__slide" role="group" aria-roledescription="слайд" aria-label="4 из 4">
-            <figure class="voice">
-              <blockquote><p>«Отличный салон! Стал для меня настоящей находкой. Хожу сюда уже несколько месяцев и всегда ухожу в прекрасном настроении. Удобное расположение, качество услуг всегда на высоте (ничего не отслаивается, никаких пропилов, + в конце наносят кремушек), цены разумные. Однозначно рекомендую! Здесь работают профессионалы, которые любят свое дело.»</p></blockquote>
-              <figcaption>Мария, 15 декабря 2025</figcaption>
-            </figure>
-          </li>
-        </ul>
-        <div class="reel__controls">
-          <button class="reel__arrow reel__arrow--prev" type="button" aria-label="Предыдущий отзыв"><span aria-hidden="true">←</span></button>
-          <div class="reel__dots">
-          <button class="reel__dot" type="button" aria-label="Отзыв 1" aria-current="true"></button>
-          <button class="reel__dot" type="button" aria-label="Отзыв 2"></button>
-          <button class="reel__dot" type="button" aria-label="Отзыв 3"></button>
-          <button class="reel__dot" type="button" aria-label="Отзыв 4"></button>
-          </div>
-          <button class="reel__arrow reel__arrow--next" type="button" aria-label="Следующий отзыв"><span aria-hidden="true">→</span></button>
-        </div>
+      <div class="voices__grid">
+        <figure class="voice">
+          <blockquote><p>«Была в салоне первый раз. Прекрасный сервис, очень радушно встретили, сразу предложили напитки, мастер Екатерина учла все мои желания. Отдельно про мастера: очень улыбчивая, вежливая и мега приятная девушка, очень быстро сделала мне потрясающее "После" из моего не самого симпатичного "До"😅 Наконец звезды для меня сошлись: место, мастер, работа, все прекрасно😍 Спасибо😌»</p></blockquote>
+          <figcaption>Алена, 8 октября 2026</figcaption>
+        </figure>
+        <figure class="voice">
+          <blockquote><p>«К вам я прихожу уже не первый раз , но к этому мастеру первый, все понравилось, я довольна👌 отзывчивая девушка , аккуратный маникюр🫶»</p></blockquote>
+          <figcaption>Елена, 4 октября 2026</figcaption>
+        </figure>
+        <figure class="voice">
+          <blockquote><p>«У Дианы я была впервые и осталась очень довольна! Все сделано аккуратно, ноготочки выглядят ровно и ухоженно💅🏻Мастер очень милая и приятная☺️ Инструменты вскрывала при мне, всё чисто и аккуратно. Буду записываться ещё, спасибо! 🤍»</p></blockquote>
+          <figcaption>Карина, 28 августа 2026</figcaption>
+        </figure>
+        <figure class="voice">
+          <blockquote><p>«Отличный салон! Стал для меня настоящей находкой. Хожу сюда уже несколько месяцев и всегда ухожу в прекрасном настроении. Удобное расположение, качество услуг всегда на высоте (ничего не отслаивается, никаких пропилов, + в конце наносят кремушек), цены разумные. Однозначно рекомендую! Здесь работают профессионалы, которые любят свое дело.»</p></blockquote>
+          <figcaption>Мария, 15 декабря 2025</figcaption>
+        </figure>
       </div>
       <p class="voices__all">Все отзывы: <a class="line-link" href="https://dikidi.net/197615" target="_blank" rel="noopener">Dikidi</a> · <a class="line-link" href="https://yandex.com/maps/org/jewel/222797438536/reviews/" target="_blank" rel="noopener">Яндекс Карты</a></p>
     </div>

@@ -1,6 +1,6 @@
 /* Jewel v2 (#11). Intro: a countdown on a dark olive wall, cracks in three bursts along a shard mesh,
    the giant word appears in place and the wall falls apart along the same cracks.
-   Also: drifting dust, the reviews reel and the map on demand. */
+   Also: falling photo cards during the count, drifting dust, the photo reels and the map on demand. */
 (() => {
   const root = document.documentElement;
   const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -315,40 +315,55 @@
     nudge();
   }
 
-  /* ---------- reviews reel ---------- */
-  const reel = document.querySelector('.reel');
-  if (reel) {
+  /* ---------- photo reels: scroll-snap, arrows, dots, keyboard ---------- */
+  document.querySelectorAll('.reel').forEach((reel) => {
     const track = reel.querySelector('.reel__track');
     const slides = [...track.children];
     const dots = [...reel.querySelectorAll('.reel__dot')];
+    const prev = reel.querySelector('.reel__arrow--prev');
+    const next = reel.querySelector('.reel__arrow--next');
     let current = 0, settle = 0;
+    const per = () => Math.max(1, Math.round(parseFloat(getComputedStyle(reel).getPropertyValue('--per')) || 1));
+    const last = () => Math.max(0, slides.length - per());
+    const step = () => (slides[1] ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth) || 1;
     const mark = (i) => {
       current = i;
       reel.dataset.index = String(i);
-      dots.forEach((d, k) => { if (k === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
-      slides.forEach((s, k) => { s.setAttribute('aria-hidden', k === i ? 'false' : 'true'); s.inert = k !== i; });
+      prev.disabled = i === 0; next.disabled = i === last();
+      dots.forEach((d, k) => { d.hidden = k > last(); if (k === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+      slides.forEach((s, k) => { const on = k >= i && k < i + per(); s.setAttribute('aria-hidden', on ? 'false' : 'true'); s.inert = !on; });
     };
     const go = (i) => {
-      const n = (i + slides.length) % slides.length;
-      track.scrollTo({ left: slides[n].offsetLeft - track.offsetLeft, behavior: calm ? 'auto' : 'smooth' });
+      const n = Math.max(0, Math.min(last(), i));
+      track.scrollTo({ left: n * step(), behavior: calm ? 'auto' : 'smooth' });
       mark(n);
     };
     track.addEventListener('scroll', () => {
       clearTimeout(settle);
       settle = setTimeout(() => {
-        const i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
-        if (i !== current) mark(Math.max(0, Math.min(slides.length - 1, i)));
+        const i = Math.max(0, Math.min(last(), Math.round(track.scrollLeft / step())));
+        if (i !== current) mark(i);
       }, 90);
     }, { passive: true });
-    reel.querySelector('.reel__arrow--prev').addEventListener('click', () => go(current - 1));
-    reel.querySelector('.reel__arrow--next').addEventListener('click', () => go(current + 1));
+    prev.addEventListener('click', () => go(current - 1));
+    next.addEventListener('click', () => go(current + 1));
     dots.forEach((d, k) => d.addEventListener('click', () => go(k)));
     track.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
       if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
     });
-    window.addEventListener('resize', () => { track.scrollLeft = current * track.clientWidth; });
+    window.addEventListener('resize', () => { const n = Math.min(current, last()); track.scrollLeft = n * step(); mark(n); });
     mark(0);
+  });
+
+  /* ---------- section shots open as a circle from the centre ---------- */
+  const groups = document.querySelectorAll('.gallery__group');
+  if (groups.length && !calm && 'IntersectionObserver' in window) {
+    root.classList.add('js-circle');
+    const io = new IntersectionObserver((list) => {
+      list.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('is-open'); io.unobserve(en.target); } });
+    }, { threshold: .2 });
+    groups.forEach((g) => io.observe(g));
   }
 
   /* ---------- map on demand ---------- */
